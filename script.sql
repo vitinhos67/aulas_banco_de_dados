@@ -103,3 +103,28 @@ INSERT INTO aluno_disciplina (aluno_id, disciplina_id) VALUES
 (8, 5),
 (8, 7),
 (8, 8);
+
+SELECT * FROM disciplinas;
+
+
+SELECT primeiro_nome AS Nome, sobrenome AS Sobrenome, data_nascimento AS "Data de nascimento" FROM alunos;
+
+SELECT a.primeiro_nome AS Nome, a.sobrenome AS Sobrenome, a.data_nascimento AS "Data de nascimento"
+FROM alunos a
+JOIN aluno_disciplina ad ON a.id = ad.aluno_id
+WHERE ad.disciplina_id = 1;
+
+
+SELECT primeiro_nome AS Nome, sobrenome AS Sobrenome, data_nascimento AS "Data de nascimento"
+FROM alunos
+ORDER BY data_nascimento ASC;
+
+SELECT d.nome AS "Nome da disciplina", td.nome AS "Unidade de ensino"
+FROM disciplinas d
+JOIN tipo_disciplina td ON d.tipo_disciplina_id = td.id
+ORDER BY td.nome DESC;
+
+SELECT primeiro_nome AS "Primeiro nome do aluno", sobrenome AS "Sobrenome do aluno", data_nascimento AS "Data de nascimento do aluno"
+FROM alunos
+WHERE data_nascimento > '2000-01-01'
+ORDER BY data_nascimento ASC;
