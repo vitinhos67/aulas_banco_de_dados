@@ -128,3 +128,27 @@ SELECT primeiro_nome AS "Primeiro nome do aluno", sobrenome AS "Sobrenome do alu
 FROM alunos
 WHERE data_nascimento > '2000-01-01'
 ORDER BY data_nascimento ASC;
+
+SELECT primeiro_nome AS Nome, sobrenome AS Sobrenome, data_nascimento AS "Data de nascimento"
+FROM alunos
+WHERE primeiro_nome LIKE '%o';
+
+SELECT *
+FROM alunos
+WHERE id = 6
+OR id IN (SELECT aluno_id FROM aluno_disciplina WHERE disciplina_id = 1);
+
+SELECT d.nome AS Disciplina, td.nome AS Area
+FROM disciplinas d
+JOIN tipo_disciplina td ON d.tipo_disciplina_id = td.id
+WHERE d.nome LIKE 'L%' OR d.nome LIKE 'G%'
+ORDER BY d.nome;
+
+
+SELECT 
+  primeiro_nome AS "Nome do cliente", 
+  sobrenome AS "Sobrenome do cliente", 
+  data_nascimento AS "Data de nascimento do cliente"
+FROM alunos
+WHERE sobrenome LIKE '%a' AND primeiro_nome ~* 'm.*a'
+ORDER BY data_nascimento DESC;
