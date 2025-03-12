@@ -152,3 +152,27 @@ SELECT
 FROM alunos
 WHERE sobrenome LIKE '%a' AND primeiro_nome ~* 'm.*a'
 ORDER BY data_nascimento DESC;
+
+SELECT * FROM alunos
+WHERE data_nascimento BETWEEN '1998-01-01' AND '2001-12-31';
+
+select * from alunos where primeiro_nome in ('Rafael', 'Leonardo', 'Pedro', 'Lucas', 'Maria', 'Aparecida');
+
+SELECT DISTINCT a.id, a.primeiro_nome, a.sobrenome, a.data_nascimento
+FROM alunos a
+JOIN aluno_disciplina ad ON a.id = ad.aluno_id;
+
+
+SELECT *
+FROM tipo_disciplina
+WHERE nome IN ('Formação Básica', 'Formação acadêmica', 'Opcional', 'Optativa', 'Optimus Prime')
+AND (nome LIKE 'F%' OR nome LIKE 'O%');
+
+select nome from disciplinas d where nome between 'Algoritmos' and 'Gestão de projetos' order by nome desc; 
+
+select * from alunos;
+
+SELECT primeiro_nome AS "Primeiro Nome", sobrenome AS "Sobrenome", data_nascimento AS "Data Nascimento"
+FROM alunos
+WHERE primeiro_nome LIKE 'o%' AND sobrenome BETWEEN 'Anubis' AND 'Xerxes'
+ORDER BY primeiro_nome;
