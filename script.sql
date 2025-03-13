@@ -176,3 +176,166 @@ SELECT primeiro_nome AS "Primeiro Nome", sobrenome AS "Sobrenome", data_nascimen
 FROM alunos
 WHERE primeiro_nome LIKE 'o%' AND sobrenome BETWEEN 'Anubis' AND 'Xerxes'
 ORDER BY primeiro_nome;
+
+ALTER TABLE aluno_disciplina
+ADD COLUMN p1 FLOAT DEFAULT 0 CHECK (p1 >= 0 AND p1 <= 50);
+
+ALTER TABLE aluno_disciplina
+ADD COLUMN p2 FLOAT DEFAULT 0 CHECK (p2 >= 0 AND p2 <= 50);
+
+ALTER TABLE aluno_disciplina
+ADD COLUMN falta int;
+
+select * from alunos;
+
+select * from disciplinas;
+select * from aluno_disciplina where aluno_id = 1;
+
+--Leonardo
+UPDATE aluno_disciplina
+SET p1 = 28.3, p2 = 41.0, falta = 1
+WHERE disciplina_id = 1 AND aluno_id = 1;
+
+UPDATE aluno_disciplina
+SET p1 = 18.7, p2 = 40.2, falta = 6
+WHERE disciplina_id = 3 AND aluno_id = 1;
+
+UPDATE aluno_disciplina
+SET p1 = 17.0, p2 = 14.5, falta = 10
+WHERE disciplina_id = 6 AND aluno_id = 1;
+
+UPDATE aluno_disciplina
+SET p1 = 38.1, p2 = 10.5, falta = 7
+WHERE disciplina_id = 8 AND aluno_id = 1;
+
+--Guilherme
+UPDATE aluno_disciplina
+SET p1 = 49.0, p2 = 35.5, falta = 14
+WHERE disciplina_id = 2 AND aluno_id = 2;
+
+UPDATE aluno_disciplina
+SET p1 = 18.8, p2 = 25.7, falta = 2
+WHERE disciplina_id = 3 AND aluno_id = 2;
+
+UPDATE aluno_disciplina
+SET p1 = 29.1, p2 = 33.7, falta = 5
+WHERE disciplina_id = 7 AND aluno_id = 2;
+
+UPDATE aluno_disciplina
+SET p1 = 37.6, p2 = 22.4, falta = 3
+WHERE disciplina_id = 8 AND aluno_id = 2;
+
+-- Pedro
+UPDATE aluno_disciplina
+SET p1 = 17.9, p2 = 44.5, falta = 7
+WHERE disciplina_id = 2 AND aluno_id = 3;
+
+UPDATE aluno_disciplina
+SET p1 = 12.0, p2 = 32.4, falta = 0
+WHERE disciplina_id = 4 AND aluno_id = 3;
+
+UPDATE aluno_disciplina
+SET p1 = 9.2, p2 = 27.3, falta = 11
+WHERE disciplina_id = 7 AND aluno_id = 3;
+
+UPDATE aluno_disciplina
+SET p1 = 28.0, p2 = 36.1, falta = 4
+WHERE disciplina_id = 8 AND aluno_id = 3;
+
+
+-- Marcos Tarcisio Buettel Mota
+UPDATE aluno_disciplina
+SET p1 = 13.0, p2 = 26.7, falta = 10
+WHERE disciplina_id = 1 AND aluno_id = 4;
+
+UPDATE aluno_disciplina
+SET p1 = 29.4, p2 = 34.1, falta = 1
+WHERE disciplina_id = 2 AND aluno_id = 4;
+
+UPDATE aluno_disciplina
+SET p1 = 45.5, p2 = 16.8, falta = 12
+WHERE disciplina_id = 3 AND aluno_id = 4;
+
+UPDATE aluno_disciplina
+SET p1 = 38.7, p2 = 11.2, falta = 2
+WHERE disciplina_id = 4 AND aluno_id = 4;
+
+
+UPDATE aluno_disciplina
+SET p1 = 4.0, p2 = 18.5, falta = 12
+WHERE disciplina_id = 5 AND aluno_id = 4;
+
+UPDATE aluno_disciplina
+SET p1 = 21.6, p2 = 40.8, falta = 6
+WHERE disciplina_id = 6 AND aluno_id = 4;
+
+UPDATE aluno_disciplina
+SET p1 = 35.0, p2 = 12.7, falta = 8
+WHERE disciplina_id = 7 AND aluno_id = 4;
+
+UPDATE aluno_disciplina
+SET p1 = 22.1, p2 = 42.3, falta = 1
+WHERE disciplina_id = 8 AND aluno_id = 4;
+
+UPDATE aluno_disciplina
+SET p1 = 49.2, p2 = 29.9, falta = 0
+WHERE disciplina_id = 9 AND aluno_id = 4;
+
+-- Lucas
+UPDATE aluno_disciplina
+SET p1 = 7.0, p2 = 44.5, falta = 9
+WHERE disciplina_id = 1 AND aluno_id = 5;
+
+UPDATE aluno_disciplina
+SET p1 = 41.8, p2 = 36.8, falta = 14
+WHERE disciplina_id = 2 AND aluno_id = 5;
+
+UPDATE aluno_disciplina
+SET p1 = 12.6, p2 = 40.2, falta = 8
+WHERE disciplina_id = 6 AND aluno_id = 5;
+
+UPDATE aluno_disciplina
+SET p1 = 26.4, p2 = 18.7, falta = 11
+WHERE disciplina_id = 7 AND aluno_id = 5;
+
+UPDATE aluno_disciplina
+SET p1 = 47.4, p2 = 32.1, falta = 5
+WHERE disciplina_id = 8 AND aluno_id = 5;
+
+-- Luiz
+
+UPDATE aluno_disciplina
+SET p1 = 0.0, p2 = 37.5, falta = 12
+WHERE disciplina_id = 3 AND aluno_id = 6;
+
+UPDATE aluno_disciplina
+SET p1 = 48.5, p2 = 28.9, falta = 4
+WHERE disciplina_id = 6 AND aluno_id = 6;
+
+UPDATE aluno_disciplina
+SET p1 = 37.3, p2 = 39.1, falta = 13
+WHERE disciplina_id = 8 AND aluno_id = 6;
+
+-- Flavia
+
+UPDATE aluno_disciplina
+SET p1 = 27.8, p2 = 42.1, falta = 0
+WHERE disciplina_id = 1 AND aluno_id = 8;
+
+UPDATE aluno_disciplina
+SET p1 = 45.3, p2 = 21.2, falta = 11
+WHERE disciplina_id = 4 AND aluno_id = 8;
+
+UPDATE aluno_disciplina
+SET p1 = 3.7, p2 = 36.3, falta = 15
+WHERE disciplina_id = 5 AND aluno_id = 8;
+
+UPDATE aluno_disciplina
+SET p1 = 16.5, p2 = 41.7, falta = 5
+WHERE disciplina_id = 7 AND aluno_id = 8;
+
+UPDATE aluno_disciplina
+SET p1 = 46.2, p2 = 44.5, falta = 2
+WHERE disciplina_id = 8 AND aluno_id = 8;
+
+select * from aluno_disciplina;
