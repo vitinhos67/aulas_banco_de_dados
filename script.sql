@@ -290,52 +290,63 @@ UPDATE aluno_disciplina
 SET p1 = 41.8, p2 = 36.8, falta = 14
 WHERE disciplina_id = 2 AND aluno_id = 5;
 
-UPDATE aluno_disciplina
-SET p1 = 12.6, p2 = 40.2, falta = 8
-WHERE disciplina_id = 6 AND aluno_id = 5;
 
-UPDATE aluno_disciplina
-SET p1 = 26.4, p2 = 18.7, falta = 11
-WHERE disciplina_id = 7 AND aluno_id = 5;
+SELECT COUNT(*) AS total_disciplinas FROM disciplinas;
 
-UPDATE aluno_disciplina
-SET p1 = 47.4, p2 = 32.1, falta = 5
-WHERE disciplina_id = 8 AND aluno_id = 5;
 
--- Luiz
+SELECT MIN(nome) AS menor_nome_tipo_disciplina FROM tipo_disciplina;
 
-UPDATE aluno_disciplina
-SET p1 = 0.0, p2 = 37.5, falta = 12
-WHERE disciplina_id = 3 AND aluno_id = 6;
 
-UPDATE aluno_disciplina
-SET p1 = 48.5, p2 = 28.9, falta = 4
-WHERE disciplina_id = 6 AND aluno_id = 6;
+SELECT 
+  TO_CHAR(MAX(data_nascimento), 'DD/MM/YYYY') AS maior_data_nascimento
+FROM alunos
+WHERE data_nascimento < '2002-01-01';
 
-UPDATE aluno_disciplina
-SET p1 = 37.3, p2 = 39.1, falta = 13
-WHERE disciplina_id = 8 AND aluno_id = 6;
 
--- Flavia
+SELECT 
+  SUM(falta) AS total_faltas, 
+  AVG(falta) AS media_faltas
+FROM aluno_disciplina
+WHERE disciplina_id = 3;
 
-UPDATE aluno_disciplina
-SET p1 = 27.8, p2 = 42.1, falta = 0
-WHERE disciplina_id = 1 AND aluno_id = 8;
+SELECT COUNT(*) AS total_alunos
+FROM alunos
+WHERE 
+  primeiro_nome ~* 'L' AND 
+  sobrenome ~* 'A' AND 
+  data_nascimento BETWEEN '1992-01-01' AND '2000-01-01';
 
-UPDATE aluno_disciplina
-SET p1 = 45.3, p2 = 21.2, falta = 11
-WHERE disciplina_id = 4 AND aluno_id = 8;
+SELECT 
+  COUNT(aluno_id) AS total_alunos,
+  MIN(p1) AS menor_nota_p1,
+  MIN(p2) AS menor_nota_p2,
+  MAX(falta) AS maior_numero_faltas
+FROM aluno_disciplina
+WHERE disciplina_id = 6;
 
-UPDATE aluno_disciplina
-SET p1 = 3.7, p2 = 36.3, falta = 15
-WHERE disciplina_id = 5 AND aluno_id = 8;
+SELECT 
+  COUNT(disciplina_id) AS total_disciplinas,
+  MIN(p1) AS menor_nota_p1,
+  MAX(p1) AS maior_nota_p1,
+  MIN(p2) AS menor_nota_p2,
+  MAX(p2) AS maior_nota_p2,
+  MIN(falta) AS menor_numero_faltas,
+  MAX(falta) AS maior_numero_faltas,
+  AVG(p1) AS media_p1,
+  AVG(p2) AS media_p2,
+  AVG(falta) AS media_faltas,
+  SUM(falta) AS total_faltas
+FROM aluno_disciplina
+WHERE aluno_id = 4;
 
-UPDATE aluno_disciplina
-SET p1 = 16.5, p2 = 41.7, falta = 5
-WHERE disciplina_id = 7 AND aluno_id = 8;
-
-UPDATE aluno_disciplina
-SET p1 = 46.2, p2 = 44.5, falta = 2
-WHERE disciplina_id = 8 AND aluno_id = 8;
-
-select * from aluno_disciplina;
+SELECT 
+  COUNT(*) AS total_linhas,
+  MIN(p1) AS menor_nota_p1,
+  MIN(p2) AS menor_nota_p2,
+  MAX(falta) AS maior_numero_faltas,
+  AVG(p1) AS media_p1,
+  AVG(p2) AS media_p2,
+  AVG(falta) AS media_faltas
+FROM aluno_disciplina
+WHERE aluno_id IN (1, 3, 4, 7, 10, 11) 
+  AND disciplina_id IN (2, 4, 5, 6, 8, 9, 15);
