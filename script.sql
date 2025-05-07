@@ -350,3 +350,55 @@ SELECT
 FROM aluno_disciplina
 WHERE aluno_id IN (1, 3, 4, 7, 10, 11) 
   AND disciplina_id IN (2, 4, 5, 6, 8, 9, 15);
+
+
+-- P2
+SELECT primeiro_nome AS Nome
+FROM alunos
+UNION
+SELECT nome AS Nome
+FROM disciplinas
+ORDER BY Nome;
+
+
+SELECT primeiro_nome
+FROM alunos
+WHERE primeiro_nome ~* 'a'
+INTERSECT
+SELECT primeiro_nome
+FROM alunos
+WHERE data_nascimento >= '1999-01-01'
+ORDER BY primeiro_nome;
+
+SELECT CONCAT(primeiro_nome, ' ', sobrenome) AS Nome_Completo
+FROM alunos
+WHERE primeiro_nome ~* 's'
+EXCEPT
+SELECT CONCAT(primeiro_nome, ' ', sobrenome) AS Nome_Completo
+FROM alunos
+WHERE sobrenome ~ 'c'
+ORDER BY Nome_Completo;
+
+SELECT d.nome AS "Nome da Disciplina", td.nome AS "Nome do Tipo de Disciplina"
+FROM disciplinas d
+JOIN tipo_disciplina td ON d.tipo_disciplina_id = td.id
+WHERE td.nome = 'Formação Complementar'
+UNION
+SELECT d.nome AS "Nome da Disciplina", td.nome AS "Nome do Tipo de Disciplina"
+FROM disciplinas d
+JOIN tipo_disciplina td ON d.tipo_disciplina_id = td.id
+WHERE td.nome = 'Práticas Profissionais'
+ORDER BY "Nome do Tipo de Disciplina" DESC, "Nome da Disciplina" DESC;
+
+SELECT CONCAT(a.primeiro_nome, ' ', a.sobrenome) AS "Nome Completo", d.nome AS "Nome da Disciplina"
+FROM alunos a
+JOIN aluno_disciplina ad ON a.id = ad.aluno_id
+JOIN disciplinas d ON ad.disciplina_id = d.id
+WHERE (ad.p1 + ad.p2) / 2 >= 70 AND ad.falta < 10
+UNION
+SELECT CONCAT(a.primeiro_nome, ' ', a.sobrenome) AS "Nome Completo", d.nome AS "Nome da Disciplina"
+FROM alunos a
+JOIN aluno_disciplina ad ON a.id = ad.aluno_id
+JOIN disciplinas d ON ad.disciplina_id = d.id
+WHERE (ad.p1 + ad.p2) / 2 >= 70 AND ad.falta < 10
+ORDER BY "Nome Completo";
